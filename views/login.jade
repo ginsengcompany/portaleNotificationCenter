@@ -1,0 +1,112 @@
+doctype html
+html(lang='en')
+    head
+        // Required meta tags always come first
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(http-equiv='x-ua-compatible', content='ie=edge')
+        title Notifications Center
+        // Font Awesome
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css')
+        // Bootstrap core CSS
+        link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+        link(href='stylesheets/custom.css', rel='stylesheet')
+        // Material Design Bootstrap
+        link(href='stylesheets/mdb.min.css', rel='stylesheet')
+        link(rel="stylesheet", type="text/css", href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css")
+        link(rel='stylesheet', href='http://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/ui-lightness/jquery-ui.css', type='text/css', media='all')
+        link(rel='icon', type='image/png', href='images/ico.png')
+    body.hidden-sn.cyan-skin
+        // Main Layout
+        main
+            // Central Modal Errore nella Login
+            #modalErroreLogin.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalErroreLogin', aria-hidden='true')
+                .modal-dialog.modal-notify.modal-danger(role='document')
+                    // Content
+                    .modal-content
+                        // Header
+                        .modal-header
+                            p.heading.lead Attenzione
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span.white-text(aria-hidden='true') ×
+                        // Body
+                        .modal-body
+                            .text-center
+                                i.fa.fa-check.fa-4x.mb-3.animated.rotateIn
+                                p
+                                    | Impossibile Accedere Utente non Autorizzato!
+                        // Footer
+                        .modal-footer.justify-content-center
+                            a.btn.btn-outline-primary.waves-effect(type='button', data-dismiss='modal') Ok
+
+            .main-wrapper
+                .container-fluid.mt-5
+                    .row.mt-5.text-left
+                        .col-lg-4.col-md-6.mb-4
+
+                        // Grid column
+                        .col-lg-4.col-md-6.mb-4
+                            section.form-elegant
+                                // Form without header
+                                .card
+                                    .card-body.mx-4
+                                        // Header
+                                        .text-center
+                                            h3.dark-grey-text.mb-5
+                                                strong Login
+                                        .row
+                                            img.img-fluid(src='images/intestazionemail.png', alt='Responsive image')
+                                        // Body
+                                        .md-form
+                                            input#inputEmail.form-control(type='text')
+                                            label(for='inputEmail') Inserire username
+                                        .md-form.pb-3
+                                            input#inputPassword.form-control(type='password')
+                                            label(for='inputPassword') Inserire password
+                                            //p.font-small.blue-text.d-flex.justify-content-end
+                                            //    | Forgot
+                                            //    a.blue-text.ml-1(href='#')  Password?
+                                        .text-center.mb-3
+                                            button.btn.blue-gradient.btn-block.btn-rounded.z-depth-1a.waves-effect.waves-light(type='button', onclick='loginEffettuatoConSuccesso();') Sign in
+                                        //p.font-small.dark-grey-text.text-right.d-flex.justify-content-center.mb-3.pt-2  or Sign in with:
+                                        //.row.my-3.d-flex.justify-content-center
+                                        //    // Facebook
+                                        //    button.btn.btn-white.btn-rounded.mr-md-3.z-depth-1a.waves-effect.waves-light(type='button')
+                                        //        i.fa.fa-facebook.blue-text.text-center
+                                        //    // Twitter
+                                        //    button.btn.btn-white.btn-rounded.mr-md-3.z-depth-1a.waves-effect.waves-light(type='button')
+                                        //        i.fa.fa-twitter.blue-text
+                                        //    // Google +
+                                        //    button.btn.btn-white.btn-rounded.z-depth-1a.waves-effect.waves-light(type='button')
+                                        //        i.fa.fa-google-plus.blue-text
+                                    // Footer
+                                    .modal-footer.mx-5.pt-3.mb-1
+                                        p.font-small.grey-text.d-flex.justify-content-end
+                                            | Non sei registrato?
+                                            a.blue-text.ml-1(href='http://www.ak12srl.it')  Contattaci
+                            .col-lg-4.col-md-6.mb-4
+            // Main Layout
+            // Footer
+            footer.page-footer.font-small.mdb-skin.fixed-bottom
+                // Copyright
+                .footer-copyright.text-center.py-3
+                    | © Copyright 2018 - AK-12. All Rights Reserved:
+                    a(target='_blank', href='http://www.ak12srl.it/')
+                        // TO DO: inserire immagine con scritta bianca
+                        //img(src='images/ak12.png', alt='Company Logo', width='70', height='30')
+                // Copyright
+            // Footer
+            // SCRIPTS
+            // JQuery
+            script(type='text/javascript', src='javascripts/jquery-3.3.1.min.js')
+            // Popper
+            script(type='text/javascript', src='javascripts/popper.min.js')
+            // Bootstrap core JavaScript
+            script(src='javascripts/bootstrap.min.js')
+            // MDB core JavaScript
+            script(type='text/javascript', src='javascripts/mdb.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js')
+            script(src='https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js')
+            script(src='javascripts/modernizr.js')
+            // Tooltips
+            script(src="javascripts/controllers/loginController.js")

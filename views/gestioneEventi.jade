@@ -1,0 +1,385 @@
+doctype html
+html(lang='en')
+    head
+        // Required meta tags always come first
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(http-equiv='x-ua-compatible', content='ie=edge')
+        title Notifications Center
+        // Font Awesome
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css')
+        // Bootstrap core CSS
+        link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+        // Material Design Bootstrap
+        link(href='stylesheets/mdb.min.css', rel='stylesheet')
+        link(rel="stylesheet", type="text/css", href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css")
+        link(rel='stylesheet', href='http://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/ui-lightness/jquery-ui.css', type='text/css', media='all')
+        link(href='stylesheets/custom.css', rel='stylesheet')
+        link(rel='icon', type='image/png', href='images/ico.png')
+    body.hidden-sn.cyan-skin
+        // Double navigation
+        header
+            // Sidebar navigation
+            #slide-out.side-nav.sn-bg-4.mdb-sidenav
+                ul.custom-scrollbar.list-unstyled(style='max-height:100vh;')
+                    // Logo
+                    li
+                        .logo-wrapper.waves-light
+                            a(href='/home')
+                                img.img-fluid.flex-center(src='/images/#{logo_org}')
+                    // /. Logo
+                    // Social
+                    li
+                        ul.social
+                            h5 Notifications Center
+                            // TO DO: se non serve elimina
+                            //li
+                            //    a.icons-sm.fb-ic(href='#')
+                            //        i.fa.fa-facebook
+                            //li
+                            //    a.icons-sm.pin-ic(href='#')
+                            //        i.fa.fa-pinterest
+                            //li
+                            //    a.icons-sm.gplus-ic(href='#')
+                            //        i.fa.fa-google-plus
+                            //li
+                            //    a.icons-sm.tw-ic(href='#')
+                            //        i.fa.fa-twitter
+                    // /Social
+                    // Side navigation links
+                    li
+                        ul.collapsible.collapsible-accordion
+                            li
+                                a.collapsible-header.waves-effect.arrow-ra(href='/home')
+                                    i.fa.fa-home
+                                    |  Home
+                                // Esempio aggiunta voci sottomenu
+                                //    i.fa.fa-angle-down.rotate-icon
+                                //.collapsible-body
+                                //    ul
+                                //        li
+                                //            a(href='/home') Notifications Center
+                                //        li
+                                //            a(href='/gestioneInteressi') Interessi
+                            li
+                                a.collapsible-header.waves-effect.arrow-ra(href='/gestioneInteressi')
+                                    i.fa.fa-universal-access
+                                    |  Interessi
+                            li
+                                a.collapsible-header.waves-effect.arrow-ra(href='/gestioneContatto')
+                                    i.fa.fa-user
+                                    |  Anagrafica
+                            li
+                                a.collapsible-header.waves-effect.arrow-r
+                                    i.fa.fa-calendar-o
+                                    |  Eventi
+                                    i.fa.fa-angle-down.rotate-icon
+                                .collapsible-body
+                                    ul
+                                        li
+                                            a.waves-effect(href='/gestioneEventi') Gestione Eventi
+                                        li
+                                            a.waves-effect(href='/gestioneNote') Gestione Note
+                            li
+                                a.collapsible-header.waves-effect.arrow-ra(href='/assegnaEvento')
+                                    i.fa.fa-bell
+                                    |  Invio Notifiche
+                            li
+                                a.collapsible-header.waves-effect.arrow-ra(href='/gestioneNotifiche')
+                                    i.fa.fa-file-excel-o
+                                    |  Gestione Report
+                            li
+                                a.collapsible-header.waves-effect.arrow-ra(href='/logout')
+                                    i.fa.fa-sign-out
+                                    |  Logout
+                .sidenav-bg.mask-strong
+            // /. Sidebar navigation
+            // Navbar
+            nav.navbar.fixed-top.navbar-toggleable-md.navbar-expand-lg.scrolling-navbar.double-nav
+                // SideNav slide-out button
+                .float-left
+                    a.button-collapse(href='#', data-activates='slide-out')
+                        i.fa.fa-bars
+                // Breadcrumb
+                .breadcrumb-dn.mr-auto
+                    p #{name}
+                ul.nav.navbar-nav.nav-flex-icons.ml-auto
+                    // TO DO: Eliminare se non serve
+                    //li.nav-item
+                    //    a.nav-link
+                    //        i.fa.fa-envelope
+                    //        span.clearfix.d-none.d-sm-inline-block Contact
+                    //li.nav-item
+                    //    a.nav-link
+                    //        i.fa.fa-comments-o
+                    //        span.clearfix.d-none.d-sm-inline-block Support
+                    //li.nav-item
+                    //    a.nav-link
+                    //        i.fa.fa-user
+                    //        span.clearfix.d-none.d-sm-inline-block Account
+                    li.nav-item.dropdown
+                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Menu Rapido
+                        .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
+                            a.dropdown-item(href='/home') Home
+                            a.dropdown-item(href='/gestioneInteressi') Interessi
+                            a.dropdown-item(href='/gestioneContatto') Anagrafica
+                            a.dropdown-item(href='/gestioneEventi') Gestione Eventi
+                            a.dropdown-item(href='/gestioneNote') Gestione Note
+                            a.dropdown-item(href='/assegnaEvento') Invio Notifiche
+                            a.dropdown-item(href='/gestioneNotifiche') Gestione Report
+                            a.dropdown-item(href='/logout') Logout
+            // /.Navbar
+            // /.Double navigation
+            // Main Layout
+            // TO DO VA gestita la progress bar se sefrve
+            //.progress.md-progress(style='height: 20px')
+            //    .progress-bar(role='progressbar', style='width: 25%; height: 20px', aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+
+            main
+                // MODAL MODIFICA EVENTO
+                #myModal1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalModificaEvento', aria-hidden='true')
+                    .modal-dialog.modal-lg(role='document')
+                        .modal-content
+                            .modal-header.text-center
+                                h4.modal-title.w-100.font-weight-bold Modifica Evento
+                                    button.close(type='button', data-dismiss='modal', aria-label='Chiudi')
+                                        span(aria-hidden='true') ×
+                            .modal-body.mx-3
+                                .row
+                                    .md-form.col-md-12
+                                        // Titolo
+                                        i.fa.fa-briefcase.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='titoloEvento') Titolo Evento
+                                        input#titoloEvento.form-control(type='text', placeholder='Titolo evento')
+                                .row
+                                    .md-form.col-md-12
+                                        // Sottotitolo
+                                        i.fa.fa-briefcase.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='sottotitoloEvento') Sottotitolo Evento
+                                        input#sottotitoloEvento.form-control(type='text', placeholder='Sottotitolo evento')
+                                .row
+                                    .md-form.col-md-6
+                                        // Data Evento inizio
+                                        i.fa.fa-calendar.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='dataEvento') Dal giorno:
+                                        input#dataEvento.form-control(type='text', name="dataEvento", placeholder='GG/MM/AAAA')
+                                    .md-form.col-md-6
+                                        // Data Evento fine
+                                        i.fa.fa-calendar.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='dataEventoFine') Al giorno:
+                                        input#dataEventoFine.form-control(type='text', name="dataEventoFine", placeholder='GG/MM/AAAA')
+                                .row
+                                    // Luogo Evento
+                                    .md-form.col-md-12
+                                        i.fa.fa-map-marker.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='luogoEvento') Luogo Evento
+                                        input#luogoEvento.form-control(type='text', placeholder='Luogo evento')
+                                .row
+                                    // URL evento
+                                    .md-form.col-md-12
+                                        i.fa.fa-globe.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='urlEvento') Url Evento
+                                        input#urlEvento.form-control(type='text', maxlength='600', placeholder='Url evento')
+                                .row
+                                    // Informazioni evento
+                                    .md-form.col-md-6
+                                        label.cols-sm-6.control-label.active(for='informazioniEvento') Informazioni Evento (CFU, note, ecc.):
+                                        textarea#informazioniEvento.form-control(rows='4', maxlength='500', placeholder='Info Evento')
+                                    // Relatori evento
+                                    .md-form.col-md-6
+                                        label.cols-sm-2.control-label.active(for='relatoriEvento') Relatori Evento:
+                                        textarea#relatoriEvento.form-control(rows='4', maxlength='500', placeholder='Relatori Evento')
+                                .row
+                                    // Descrizione evento
+                                    .md-form.col-md-12
+                                        label.cols-sm-2.control-label.active(for='descrizioneEvento') Descrizione Evento:
+                                        textarea#descrizioneEvento.form-control(rows='4', maxlength='2000', placeholder='Descrizione Evento')
+                                .row
+                                    // Carica immagini evento da pc
+                                    .col-sm-12
+                                        label.cols-sm-2.control-label(for='caricaFoto') Carica Immagine da PC
+                                        .input-group.input-file()
+                                            span.input-group-btn
+                                                button.btn.btn-primary.btn-choose(type='button') Seleziona
+                                            input#caricaFoto.form-control(type='text', placeholder='Carica immagini da PC...')
+                                            span.input-group-btn
+                                                button.btn.btn-primary.btn-reset(type='button') Reset
+                            // dialog buttons
+                            .modal-footer
+                                button.btn.btn-primary.btn-block(type='button', onclick='updateEvento();') Salva
+
+                // AGGIUNGI EVENTO
+                #myModal2.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalAggiungiEvento', aria-hidden='true')
+                    .modal-dialog.modal-lg(role='document')
+                        .modal-content
+                            .modal-header.text-center
+                                h4.modal-title.w-100.font-weight-bold Aggiungi Evento
+                                    button.close(type='button', data-dismiss='modal', aria-label='Chiudi')
+                                        span(aria-hidden='true') ×
+                            .modal-body.mx-3
+                                .row
+                                    // Titolo evento
+                                    .md-form.col-md-12
+                                        i.fa.fa-briefcase.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='titoloEvento2') Titolo Evento
+                                        input#titoloEvento2.form-control(type='text', placeholder='Titolo evento')
+                                .row
+                                    // Sottotitolo
+                                    .md-form.col-md-12
+                                        i.fa.fa-briefcase.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='sottotitoloEvento2') Sottotitolo Evento
+                                        input#sottotitoloEvento2.form-control(type='text', placeholder='Sottotitolo evento')
+                                .row
+                                    // Data Evento inizio
+                                    .md-form.col-md-6
+                                        i.fa.fa-calendar.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='dataEvento2') Dal giorno:
+                                        input#dataEvento2.form-control(type='text', name="dataEvento2", placeholder='GG/MM/AAAA')
+                                    // Data Evento fine
+                                    .md-form.col-md-6
+                                        i.fa.fa-calendar.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='dataEventoFine2') Al giorno:
+                                        input#dataEventoFine2.form-control(type='text', name="dataEventoFine2", placeholder='GG/MM/AAAA')
+                                .row
+                                    // Luogo Evento
+                                    .md-form.col-md-12
+                                        i.fa.fa-map-marker.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label.active(for='luogoEvento2') Luogo Evento
+                                        input#luogoEvento2.form-control(type='text', placeholder='Luogo evento')
+                                .row
+                                    // Informazioni evento
+                                    .md-form.col-md-6
+                                        label.cols-sm-2.control-label.active(for='informazioniEvento2') Informazioni Evento (CFU, note, ecc.):
+                                        textarea#informazioniEvento2.form-control(rows='4', maxlength='500', placeholder='Info evento')
+                                    // Relatori evento
+                                    .md-form.col-md-6
+                                        label.cols-sm-2.control-label.active(for='relatoriEvento2') Relatori Evento:
+                                        textarea#relatoriEvento2.form-control(rows='4', maxlength='500', placeholder='Relatori evento')
+                                .row
+                                    // URL evento
+                                    .md-form.col-md-12
+                                        i.fa.fa-globe.prefix(aria-hidden='true')
+                                        label.cols-sm-2.control-label(for='urlEvento2') Url Evento:
+                                        input#urlEvento2.form-control(type = 'text', maxlength='600', placeholder='Url evento')
+                                .row
+                                    // Descrizione evento
+                                    .md-form.col-md-12
+                                        label.cols-sm-2.control-label(for='descrizioneEvento2') Descrizione Evento:
+                                        textarea#descrizioneEvento2.form-control(rows='4', maxlength='2000', placeholder='Descrizione evento')
+                                .row
+                                    // Carica immagini evento da pc
+                                    .md-form.col-md-12
+                                        .col-sm-12
+                                            label.cols-sm-2.control-label(for='caricaFoto2') Carica Immagine da PC
+                                            .input-group.input-file()
+                                                span.input-group-btn
+                                                    button.btn.btn-primary.btn-choose(type='button') Seleziona
+                                                input#caricaFoto2.form-control(type='text', placeholder='Carica immagini da PC...')
+                                                span.input-group-btn
+                                                    button.btn.btn-primary.btn-reset(type='button') Reset
+                            // dialog buttons
+                            .modal-footer
+                                button.btn.btn-primary.btn-block(type='button', onclick='addEvento();') Salva
+
+                // ALERT ERRORE RIEMPIMENTO
+                #myModal3.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalCampiMancanti', aria-hidden='true')
+                    .modal-dialog.modal-notify.modal-danger(role='document')
+                        .modal-content
+                            // Header
+                            .modal-header
+                                p.heading.lead Attenzione
+                                button.close(type='button', data-dismiss='modal', aria-label='modalCampiMancanti')
+                                    span.white-text(aria-hidden='true') ×
+                            // dialog body
+                            .modal-body
+                                .text-center
+                                    h4 Inserire tutti i campi!
+                            // dialog buttons
+                            .modal-footer.justify-content-center
+                                a.btn.btn-outline-primary.waves-effect(type='button', data-dismiss='modal') Ok
+
+
+                .container-fluid.mx-auto
+                    .jumbotron
+                        h1.h1-reponsive.mb-3.blue-text
+                            strong Gestione Evento
+                        p.lead
+                            | Crea gli eventi a cui invitare i membri della tua organizzazione.
+                        hr.my-4
+                        p
+                            | Ogni evento è dettagliabile e modificabile.
+
+                .row.mx-3
+                    .col-sm-4
+                        h3.h3-reponsive.mb-3.blue-text
+                            strong Scegli un'opzione :
+
+                hr
+                .container-fluid.mx-3#conteinerHideEvento
+                    .row
+                        .col-sm-2
+                            button#aggiungiEvento.btn.btn-primary(onclick='openModal2();') Aggiungi Evento
+                        .col-sm-2
+                            button#modificaEvento.btn.btn-primary(onclick='openModal();') Modifica Evento
+                        .col-sm-2
+                            button#eliminaEvento.btn.btn-primary(onclick='eliminaEvento();') Elimina Evento
+                br
+                .row.mx-3
+                    .col-sm-12.table-responsive
+                        table#tabellaEventi.table.table-striped.table-bordered(width='100%', cellspacing='0')
+                            thead
+                                tr
+                                    th
+                                    th Titolo Evento
+                                    th Sottotitolo Evento
+                                    th Luogo
+                                    th Data Inizio
+                                    th Data Fine
+                                    th Relatori
+
+                br
+            // Footer
+            footer.page-footer.font-small.mdb-skin
+                // Copyright
+                .footer-copyright.text-center.py-3
+                    | © Copyright 2018 - AK-12. All Rights Reserved:
+                    a(target='_blank', href='http://www.ak12srl.it/')
+                        // TO DO: inserire immagine con scritta bianca
+                        //img(src='images/ak12.png', alt='Company Logo', width='70', height='30')
+                // Copyright
+            // Footer
+            // Main Layout
+            // SCRIPTS
+            // JQuery
+
+
+            script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.js')
+            // Popper
+            script(type='text/javascript', src='javascripts/popper.min.js')
+            // Bootstrap core JavaScript
+            script(src='javascripts/bootstrap.min.js')
+            // MDB core JavaScript
+            script(type='text/javascript', src='javascripts/mdb.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js')
+            script(src='https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js')
+            script(src='javascripts/modernizr.js')
+            script(src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
+            script(src='https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js')
+            script(src='http://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js', type='text/javascript')
+            script(src="javascripts/bootstrap-tokenfield.min.js")
+            script(src="javascripts/dataTables.buttons.min.js")
+            script(src="javascripts/dataTables.select.min.js")
+            // TO DO: Credo non serva a nulla
+            script(src="javascripts/controllers/gestioneEventiController.js")
+            script.
+                // SideNav Initialization
+                $(".button-collapse").sideNav();
+
+
+//script(src='javascripts/main.js')
+//script(src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js')
+//script(src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js')
+//script(src='https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js')
+//script(src='javascripts/dataTables.buttons.min.js')
+//script(src='javascripts/dataTables.select.min.js')
