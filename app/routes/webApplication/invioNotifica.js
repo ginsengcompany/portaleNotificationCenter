@@ -74,7 +74,7 @@ function posyQuery(indice,datiTab) {
                     };
 
                     const options1 = {
-                        url: 'http://localhost:3000/checkNotifica',
+                        url: 'http://localhost:3004/checkNotifica',
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -109,7 +109,7 @@ function posyQuery(indice,datiTab) {
                     datiEmail.subject = "Notifications - Center , Leggi subito per scoprire!";
 
                     const options = {
-                        url: 'http://localhost:3000/sendEmail',
+                        url: 'http://localhost:3004/sendEmail',
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -120,7 +120,7 @@ function posyQuery(indice,datiTab) {
                     };
 
                     const options1 = {
-                        url: 'http://localhost:3000/checkNotifica',
+                        url: 'http://localhost:3004/checkNotifica',
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -189,7 +189,7 @@ function posyQuery(indice,datiTab) {
                                         }
                                     };
                                     const options1 = {
-                                        url: 'http://localhost:3000/checkNotifica',
+                                        url: 'http://localhost:3004/checkNotifica',
                                         method: 'POST',
                                         headers: {
                                             'Accept': 'application/json',

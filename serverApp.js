@@ -105,10 +105,10 @@ let flag = false;
 let flag1 = false;
 
 
-cron.schedule('40 *!/1 * * * *', function(){
+cron.schedule('16 *!/1 * * * *', function(){
 
     const options = {
-        url: 'http://localhost:3000/getCountNotifiche',
+        url: 'http://localhost:3004/getCountNotifiche',
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -123,7 +123,7 @@ cron.schedule('40 *!/1 * * * *', function(){
             let  contaTot = JSON.parse(data[0]);
             if(parseInt(contaTot.count)>0){
                 request({
-                    url: 'http://localhost:3000/invioNotifica',
+                    url: 'http://localhost:3004/invioNotifica',
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

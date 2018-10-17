@@ -5,3 +5,15 @@ td.details-control {
 tr.shown td.details-control {
     background: url('../images/details_close.png') no-repeat center center;
 }
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: rgb(255, 167, 66);
+}
+.switch label input[type="checkbox"]:checked + .lever {
+
+    background-color: rgb(250, 150, 50);
+}
+/*.container-fluid .row .md-form .form-control .ui-datepicker #dataEvento {
+    position: relative !important;
+    top: -400px !important;
+    left: 200px !important;
+}*/
