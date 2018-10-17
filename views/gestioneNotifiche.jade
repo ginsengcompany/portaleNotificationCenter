@@ -183,6 +183,12 @@ html(lang='en')
                             label.cols-sm-2.control-label(for='filtroDataInvio') Filtra eventi/note a partire dal giorno:
                             input#filtroDataInvio.form-control(type='text', name="filtroDataInvio", readonly="readonly", placeholder='GG/MM/AAAA')
 
+                // TO DO: modificare picker
+                //.row.mx-5
+                //    .md-form.col-md-6
+                //        input#date-picker-example.form-control.datepicker(placeholder='Selected date', type='text')
+                //        label(for='date-picker-example') Try me...
+
                 .row.mx-2
                     .col-sm-12
                         table#tabellaNotifiche.table.table-striped.table-bordered(width='100%', cellspacing='0', style=" z-index: 1; position: relative;")
@@ -282,3 +288,10 @@ html(lang='en')
             script.
                 // SideNav Initialization
                 $(".button-collapse").sideNav();
+                // TO DO: Cambiare i piucker con questi nuovi
+                //$('#date-picker-example').pickadate({
+                //    format:"dd/mm/yyyy",
+                //    onSet: function (dateText) {
+                //        console.log(JSON.stringify(dateText) + ' nuovo' + $('#date-picker-example').val());
+                //    }
+                //});

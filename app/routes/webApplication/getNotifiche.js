@@ -18,7 +18,24 @@ router.get('/',function (req, res, next) {
 
         if (multiUser.data[i].cod_org === organizzazione) {
 
-            let queryPostEvento = "SELECT A.username, A.nome, A.cognome, A.specializzazione, C.titolo, B._id_utente, B._id_evento, B.data_invio, B.tipo, B.stato, B.confermato, B.eliminato, B._id FROM "+multiUser.data[i].tb_contatti+" A INNER JOIN "+multiUser.data[i].tb_notifiche+" B ON A._id=B._id_utente INNER JOIN "+multiUser.data[i].tb_eventi+" C ON C._id=B._id_evento WHERE C.tipo = 1";
+            let queryPostEvento =
+                "SELECT " +
+                "A.username, " +
+                "A.nome, " +
+                "A.cognome, " +
+                "A.specializzazione, " +
+                "C.titolo, " +
+                "B._id_utente, " +
+                "B._id_evento, " +
+                "B.data_invio, " +
+                "B.tipo, " +
+                "B.stato, " +
+                "B.confermato, " +
+                "B.eliminato, " +
+                "B._id FROM " + multiUser.data[i].tb_contatti + " A INNER JOIN " + multiUser.data[i].tb_notifiche + " B " +
+                "ON A._id=B._id_utente INNER JOIN " + multiUser.data[i].tb_eventi + " C " +
+                "ON C._id = B._id_evento " +
+                "WHERE C.tipo = 1";
 
             const query = client.query(queryPostEvento);
 
@@ -72,9 +89,10 @@ router.post('/',function (req, res, next) {
                 "B.confermato, " +
                 "B.eliminato, " +
                 "B._id " +
-                "FROM "+multiUser.data[i].tb_contatti + " A INNER JOIN " + multiUser.data[i].tb_notifiche + " B " +
+                "FROM " + multiUser.data[i].tb_contatti + " A INNER JOIN " + multiUser.data[i].tb_notifiche + " B " +
                 "ON " +
-                "A._id = B._id_utente INNER JOIN "+multiUser.data[i].tb_eventi+" C ON C._id = B._id_evento " +
+                "A._id = B._id_utente INNER JOIN " + multiUser.data[i].tb_eventi + " C " +
+                "ON C._id = B._id_evento " +
                 "WHERE C.tipo = 1 AND B.data_invio >= '" + moment(data).format() + "';";
 
             const query = client.query(queryPostEvento);
