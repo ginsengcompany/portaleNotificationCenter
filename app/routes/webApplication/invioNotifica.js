@@ -153,9 +153,9 @@ function posyQuery(indice,datiTab) {
 
                 if(datiEmail.arrayEventi && datiEmail.arrayUtenti){
 
-                    let linkPartecipa = 'http://omceoce.ak12srl.it/switchForEmail?confermato=true&eliminato=false&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiTab.tb_notifiche;
+                    let linkPartecipa = 'https://notification-center.ak12srl.it/switchForEmail?confermato=true&eliminato=false&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiTab.tb_notifiche;
 
-                    let linkDeclina = 'http://omceoce.ak12srl.it/switchForEmail?confermato=false&eliminato=true&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiTab.tb_notifiche;
+                    let linkDeclina = 'https://notification-center.ak12srl.it/switchForEmail?confermato=false&eliminato=true&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiTab.tb_notifiche;
 
                     let link = [];
 

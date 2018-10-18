@@ -21,7 +21,7 @@ router.post('/',function (req, res, next) {
 
         if (multiUser.data[i].cod_org === organizzazione) {
 
-            let queryPostContatto = "INSERT INTO "+multiUser.data[i].tb_contatti+" " +
+            let queryPostContatto = "INSERT INTO " + multiUser.data[i].tb_contatti + " " +
                 "(nome, cognome, specializzazione, provincia, mail, username, password, numero_telefono, interessi, pec)" +
                 "VALUES (" +
                 "'" + datiContatto.nome                                 +"', " +
