@@ -7,10 +7,23 @@ let eventi;
 $(document).ready(function () {
     inizializzaPagina();
 
+    tabUtenti = $('#tabellaUtenti').DataTable({});
+
+    tabUtenti.on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+        if ($(this).hasClass('selected')) {
+            $('#btnConfermaStepTre').show();
+        }else
+            $('#btnConfermaStepTre').hide();
+        console.log('click');
+    } );
+
+
     $('#tabellaEventi tbody').on('click', 'tr', function () {
         passaStepTre();
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
+            $('#btnConfermaStepDue').prop("disabled", true);
         }
         else {
             tabEventi.rows().deselect();
@@ -33,17 +46,6 @@ $(document).ready(function () {
             tr.addClass('shown');
         }
     });
-
-    $('#tabellaUtenti tbody').on( 'click', 'tr', function () {
-        $('#btnStepTre').show();
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            tabUtenti.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
 
     $.ajax({
         url: '/getInteressi',
@@ -97,9 +99,10 @@ function inizializzaPagina() {
     $('#titoloSeleziona').hide();
     $('#contenutoStepDue').hide();
     $('#contenutoStepTre').hide();
-    $('#btnStepTre').hide();
     $('#contenutoStepQuattro').hide();
+    $('#btnConfermaStepTre').hide();
     $("#stepUno").addClass("active");
+    $("#stepDue").removeClass("active");
     $("#stepTre").removeClass("active");
     $("#stepQuattro").removeClass("active");
     $('#contenutoStepUno').show();
@@ -135,7 +138,10 @@ function passaStepTre() {
     });
 }
 function passaStepQuattro() {
-    $('#contenutoStepQuattro').show();
+        $('#contenutoStepTre').hide();
+        $("#stepTre").removeClass("active");
+        $("#stepQuattro").addClass("active");
+        $('#contenutoStepQuattro').show();
 }
 
 function switchTableEvent() {
@@ -300,7 +306,7 @@ function switchTableEvent() {
         $('#tabellaEventi').dataTable().fnClearTable();
     }
 }
-
+/*
 let something = (function () {
     let executed = false;
     return function () {
@@ -308,58 +314,24 @@ let something = (function () {
             executed = true;
             $('#tabellaUtenti tbody').on('click', 'tr', function () {
                 $(this).toggleClass('selected');
+                if ($(this).hasClass('selected')) {
+                    $('#btnConfermaStepTre').show();
+                } else {
+                    console.log($(this).toggleClass('selected'));
+                    $('#btnConfermaStepTre').hide();
+                }
             });
         }
     };
 })();
+*/
 
-function getUtentiNotNotifica() {
-    let ids1 = $.map(tabEventi.rows('.selected').data(), function (item) {
-        return item;
-    });
-    arrayEventi = ids1;
-    datiNotNotifica = {
-        "idEvento": arrayEventi[0]._id
-    };
-
-    tabUtenti = $('#tabellaUtenti').DataTable({
-        responsive: true,
-        dom: 'Bfrtip',
-        buttons: [
-            'selectAll',
-            'selectNone',
-        ],
-        language: {
-            buttons: {
-                selectAll: "Seleziona tutto",
-                selectNone: "Deseleziona"
-            }
-        },
-        select: {
-            style: 'multi'
-        },
-        select: true,
-        ajax: {
-            type: 'POST',
-            url: '/getUtentiNotNotifica',
-            data: datiNotNotifica
-        },
-        columns: [
-            {"data": "_id", "visible": false},
-            {"data": "username"},
-            {"data": "cognome"},
-            {"data": "nome"},
-            {"data": "specializzazione"},
-            {"data": "provincia"}
-        ]
-    });
-    something();
-}
 
 function generaTabUtenti(rotteUtenti) {
-    console.log("data");
-    if (tabUtenti)
+    if (tabUtenti) {
+        $('#tabellaUtenti').dataTable().fnClearTable();
         tabUtenti.destroy();
+    }
     let tab = $('#tabellaUtenti').DataTable({
         responsive: true,
         dom: 'Bfrtip',
@@ -390,6 +362,7 @@ function generaTabUtenti(rotteUtenti) {
             {"data": "provincia"}
         ]
     });
+   // something();
     return tab;
 }
 
@@ -409,56 +382,79 @@ function switchTableModalitaInvio() {
     //token
     if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === false){
         rotteUtenti = '/getUtentiToken';
-        console.log("if");
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === true){
         rotteUtenti = 'getUtentiTokenSms';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === false){
         rotteUtenti = '/getUtentiTokenEmail';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     //email
     else if ($('#invioPush').prop('checked') === false && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === false) {
         rotteUtenti = '/getUtentiEmail';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     else if ($('#invioPush').prop('checked') === false && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === true) {
         rotteUtenti = '/getUtentiEmailSms';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === false) {
         rotteUtenti = '/getUtentiEmailToken';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     //sms
     else if ($('#invioPush').prop('checked') === false && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === true) {
         rotteUtenti = '/getUtentiSms';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === true) {
         rotteUtenti = '/getUtentiSmsToken';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
     else if ($('#invioPush').prop('checked') === false && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === true) {
         rotteUtenti = '/getUtentiSmsEmail';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
-
-    //all
     else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === true) {
         rotteUtenti = '/getUtentiNotNotifica';
         tabUtenti = generaTabUtenti(rotteUtenti);
+        $('#conteinerHideUtenti').show();
     }
-    else ($('#invioPush').prop('checked') === false && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === false)
+    else
     {
+        $('#btnConfermaStepTre').hide();
         $('#conteinerHideUtenti').hide();
     }
-
-    $('#conteinerHideUtenti').show();
+    $('#btnAnnullaStepTre').show();
 }
+$('#tabellaUtenti tbody').on('click', 'tr', function () {
+    console.log(tabUtenti.rows( '.selected' ).count());
+    console.log(tabUtenti.rows( '.selected' ).data().length);
+    if(tabUtenti.rows( '.selected' ).count()>0){
+        $('#btnConfermaStepTre').show();
+    }else
+        $('#btnConfermaStepTre').hide();
+    /*if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+        $('#btnConfermaStepTre').hide();
+    } else {
+        tabUtenti.rows().deselect();
+        $(this).toggleClass('selected');
+        $('#btnConfermaStepTre').show();
+    }*/
+});
 
 let successMessage = function (idUtente, idEvento, tipo, tipoEvento) {
 

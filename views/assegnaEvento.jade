@@ -104,7 +104,7 @@ html(lang='en')
                         i.fa.fa-bars
                 // Breadcrumb
                 .breadcrumb-dn.mr-auto
-                    p Material Design for Bootstrap
+                    p Ordine Degli Infermieri
                 ul.nav.navbar-nav.nav-flex-icons.ml-auto
                     // TO DO: Eliminare se non serve
                     //li.nav-item
@@ -121,7 +121,7 @@ html(lang='en')
                     //        span.clearfix.d-none.d-sm-inline-block Account
                     li.nav-item.dropdown
                         a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                            | Dropdown
+                            | Menu Rapido
                         .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
                             a.dropdown-item(href='/home') Home
                             a.dropdown-item(href='/gestioneInteressi') Interessi
@@ -333,122 +333,11 @@ html(lang='en')
                                     // /.Stepers Wrapper
                                     // Steppers Navigation
                                     .row.mt-1#contenutoStepQuattro
+                                        label.text-center Verrà notificato il seguente evento:
                                         .col-md-12.text-lg-center
                                             button#btnAnnullaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-secondary.previous-step(onclick='inizializzaPagina();') Annulla
                                             button#btnConfermaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-primary.next-step Invia
                                     // /.Vertical Steppers
-
-                    .row
-                        .col-sm-4
-                            h3.h3-reponsive.mb-3.blue-text
-                                strong Scegli un'opzione :
-                    .row
-                        .col-3
-                            h4 Invia Evento
-                            label.bs-switch(for='invioEvento')
-                                input#invioEvento(name='someSwitchOption001', type='checkbox', autocomplete='off' onchange='switchTable1();')
-                                span.slider.round
-                        .col-3
-                            h4 Invia Nota Informativa
-                            label.bs-switch(for='invioNotainformativa')
-                                input#invioNotainformativa(name='someSwitchOption001', type='checkbox', autocomplete='off' onchange='switchTable1();')
-                                span.slider.round
-                    br
-                    hr
-                    .row#hideInfo
-                        .col-sm-12
-                            .alert.alert-danger
-                                strong Info!
-                                |  Selezionare solo un'opzione.
-
-                .container-fluid.mx-3#conteinerHideModalita
-                    .row
-                        .col-sm-4
-                            h3 Seleziona modalità di comunicazione
-                        .col-sm-2
-                        .col-sm-4
-                            h3 Seleziona modalità d'interesse
-                    .row
-                        .col-sm-2
-                            h4 Push Notifications
-                            label.bs-switch(for='invioPush')
-                                input#invioPush(name='someSwitchOption001', type='checkbox', checked=true, onchange='switchTable();')
-                                span.slider.round
-                        .col-sm-2
-                            h4 E-mail
-                            label.bs-switch(for='invioEmail')
-                                input#invioEmail(name='someSwitchOption001', type='checkbox', checked=true, onchange='switchTable();')
-                                span.slider.round
-                        .col-sm-2
-                            h4 SMS
-                            label.bs-switch(for='invioSms')
-                                input#invioSms(name='someSwitchOption001', type='checkbox', checked=true, onchange='switchTable();')
-                                span.slider.round
-                        .col-md-6
-                            label.cols-sm-2.control-label(for='interessi') Interessi
-                            .cols-sm-10
-                                .input-group.mb-3
-                                    .input-group-prepend
-                                        span#basic-addon1.input-group-addon
-                                            i.fa.fa-hashtag(aria-hidden='true')
-                                    input#interessi.form-control(type='text', placeholder='Interessi', aria-describedby='basic-addon1', name='interessi', onchange='switchTable();')
-                br
-
-                .container-fluid#conteinerHideData
-                    .row
-                        .md-form.col-md-6
-                            i.fa.fa-calendar.prefix(aria-hidden='true')
-                            label.cols-sm-2.control-label(for='dataEvento') Dal giorno:
-                            input#dataEvento.form-control(type='text', name="dataEvento", readonly="readonly", placeholder='GG/MM/AAAA')
-                .container-fluid#titoloSeleziona
-                    .row
-                        .col-sm-6
-                            h3 Seleziona L'evento
-                        .col-sm-6
-                            h3 Seleziona i contatti
-                .container-fluid#conteinerHideEvento
-                    .row.mx-2
-                        .col-sm-6.table-responsive
-                            table#tabellaEventi.table.table-striped.table-bordered(width='100%', cellspacing='0')
-                                thead
-                                    tr
-                                        th
-                                        th Titolo Evento
-                                        th Sottotitolo Evento
-                                        th Luogo
-                                        th Data Inizio
-                                        th Data Fine
-                                        th Relatori
-                                tfoot
-                                    tr
-                                        th
-                                        th Titolo Evento
-                                        th Sottotitolo Evento
-                                        th Luogo
-                                        th Data Inizio
-                                        th Data Fine
-                                        th Relatori
-
-                        .col-sm-6.table-responsive
-                            table#tabellaUtenti.table.table-striped.table-bordered(width='100%', cellspacing='0')
-                                thead
-                                    tr
-                                        th id
-                                        th Username
-                                        th Cognome
-                                        th Nome
-                                        th Professione
-                                        th Residenza
-                br
-
-                .container-fluid#divButton
-                    .row.d-flex.flex-row-reverse
-                        .col-sm-2.pull-right
-                            button#SalvaDati.btn.btn-primary.btn-lg.pull-right.btn-block(onclick='salvaDati();') Invia
-                        .col-sm-2.pull-right
-                            button#SelezionaTutti.btn.btn-primary.btn-lg.pull-right.btn-block(onclick='selezionaTutti();') Seleziona Tutti
-                        .col-sm-2.pull-right
-                            button#DeselezionaTutti.btn.btn-primary.btn-lg.pull-right.btn-block(onclick='deselezionaTutti();') Deseleziona Tutti
 
                 br
                 br
