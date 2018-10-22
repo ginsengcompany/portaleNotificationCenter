@@ -18,7 +18,7 @@ html(lang='en')
         link(rel='stylesheet', href='stylesheets/bootstrap-tokenfield.min.css')
         link(rel='stylesheet', href='stylesheets/tokenfield-typeahead.min.css')
         link(rel='icon', type='image/png', href='images/ico.png')
-    body.hidden-sn.cyan-skin
+    body.hidden-sn.mdb-skin
         // Double navigation
         header
             // Sidebar navigation
@@ -211,7 +211,7 @@ html(lang='en')
                                     ul.stepper.stepper-vertical
                                         // First Step
                                         li.active#stepUno
-                                            a(href='#!')
+                                            a(href='')
                                                 span.circle 1
                                                 span.label Scegli un opzione
 
@@ -232,7 +232,7 @@ html(lang='en')
                                         // Second Step
                                         li#stepDue
                                             // Section Title
-                                            a(href='#!')
+                                            a(href='')
                                                 span.circle 2
                                                 span.label Seleziona Evento
                                             // Section Description
@@ -273,7 +273,7 @@ html(lang='en')
 
                                         // Third Step
                                         li#stepTre
-                                            a(href='#!')
+                                            a(href='')
                                                 span.circle 3
                                                 span.label Seleziona modalità di invio e utenti
                                             .step-content.col-md-12#contenutoStepTre
@@ -327,16 +327,20 @@ html(lang='en')
                                                         button#btnConfermaStepTre.waves-effect.waves-dark.btn.btn-md.btn-primary.next-step(onclick='passaStepQuattro();') Continua
                                         // Fourth Step
                                         li#stepQuattro
-                                            a(href='#!')
+                                            a(href='')
                                                 span.circle 4
                                                 span.label Invia
-                                    // /.Stepers Wrapper
-                                    // Steppers Navigation
-                                    .row.mt-1#contenutoStepQuattro
-                                        label.text-center Verrà notificato il seguente evento:
-                                        .col-md-12.text-lg-center
-                                            button#btnAnnullaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-secondary.previous-step(onclick='inizializzaPagina();') Annulla
-                                            button#btnConfermaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-primary.next-step Invia
+                                                     // /.Stepers Wrapper
+                                                    // Steppers Navigation
+                                            .step-content.col-md-12#contenutoStepQuattro
+                                                .container-fluid.mx-3
+                                                    .col-md-12.text-center
+                                                        .text-center
+                                                            h3 Verrà notificato il seguente evento:
+                                                            h1#lblEvento.font-weight-bold
+                                                .col-md-12.text-lg-center
+                                                    button#btnAnnullaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-secondary.previous-step(onclick='inizializzaPagina();') Annulla
+                                                    button#btnConfermaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-primary.next-step(onclick='salvaDati();') Invia
                                     // /.Vertical Steppers
 
                 br

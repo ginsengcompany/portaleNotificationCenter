@@ -48,7 +48,7 @@ function posyQuery(indice,datiTab) {
             let myOjb = JSON.stringify(result.rows, null, "    ");
             datiEmail.arrayUtenti = JSON.parse(myOjb)[0];
 
-            if(indice.tipo==='Push Notifications'){
+            /*if(indice.tipo==='Push Notifications'){
 
                 if(datiEmail.arrayEventi && datiEmail.arrayUtenti){
                     let restKey = 'OTM3ZGZiOGUtZjNiYS00YTAxLWFjYmMtMDRjN2I2NjE5MWE2';
@@ -99,9 +99,9 @@ function posyQuery(indice,datiTab) {
 
                 }
 
-            }
+            }*/
 
-            else if(indice.tipo==='E-mail'){
+             if(indice.tipo==='E-mail'){
 
                 if(datiEmail.arrayEventi && datiEmail.arrayUtenti){
                     datiEmail.to = indice.mail;

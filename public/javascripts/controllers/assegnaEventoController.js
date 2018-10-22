@@ -106,6 +106,7 @@ function inizializzaPagina() {
     $('#contenutoStepUno').show();
     $('#invioEvento').prop("checked", false);
     $('#invioNotainformativa').prop("checked", false);
+    $('#btnConfermaStepQuattro').prop("disabled", false);
     $('#invioPush').prop('checked', false);
     $('#invioEmail').prop('checked', false);
     $('#invioSms').prop('checked', false);
@@ -140,6 +141,12 @@ function passaStepQuattro() {
         $("#stepTre").removeClass("active");
         $("#stepQuattro").addClass("active");
         $('#contenutoStepQuattro').show();
+        let ids1 = $.map(tabEventi.rows('.selected').data(), function (item) {
+            return item;
+        });
+        arrayEventi = ids1;
+        console.log(arrayEventi);
+        $("#lblEvento").text(arrayEventi[0].titolo);
 }
 
 function switchTableEvent() {
@@ -291,25 +298,6 @@ function switchTableEvent() {
         $('#tabellaEventi').dataTable().fnClearTable();
     }
 }
-
-/*
-let something = (function () {
-    let executed = false;
-    return function () {
-        if (!executed) {
-            executed = true;
-            $('#tabellaUtenti tbody').on('click', 'tr', function () {
-                $(this).toggleClass('selected');
-                if ($(this).hasClass('selected')) {
-                    $('#btnConfermaStepTre').show();
-                } else {
-                    $('#btnConfermaStepTre').hide();
-                }
-            });
-        }
-    };
-})();
-*/
 
 function generaTabUtenti(rotteUtenti) {
     if (tabUtenti) {
@@ -467,6 +455,7 @@ let successMessage = function (idUtente, idEvento, tipo, tipoEvento) {
                 $("#myModal1").on("show", function () {
                     $("#myModal1 a.btn").on("click", function (e) {
                         $("#myModal1").modal('hide');
+                        window.location.reload(true);
                     });
                 });
                 $("#myModal1").on("hide", function () {
@@ -502,11 +491,8 @@ function salvaDati() {
         return item;
     });
     arrayEventi = ids1;
-    if ($('#invioPush').prop('checked') === false && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === false)
-        $('#myModal3').modal('show');
-    if (!arrayUtenti.length || !arrayEventi.length)
-        $('#myModal3').modal('show');
-
+    console.log(arrayUtenti);
+    console.log(arrayEventi);
     for (let i = 0; i < arrayUtenti.length; i++) {
         let idUtente = arrayUtenti[i]._id;
         let idEvento = arrayEventi[0]._id;
@@ -519,6 +505,7 @@ function salvaDati() {
         if (arrayUtenti[i].numero_telefono && $('#invioSms').prop('checked'))
             successMessage(idUtente, idEvento, 'SMS', tipoEvento);
     }
+    $('#btnConfermaStepQuattro').prop("disabled", true);
 }
 
 function format(d) {
