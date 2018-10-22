@@ -13,7 +13,7 @@ router.post('/',function (req, res, next) {
     function replaceAll (search, replacement, string) {
         let target = string;
         return target.replace(new RegExp(search, 'g'), replacement);
-    };
+    }
 
     let datiUpdateOrDelete = req.body;
 

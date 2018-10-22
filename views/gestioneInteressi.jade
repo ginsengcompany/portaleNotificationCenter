@@ -156,7 +156,7 @@ html(lang='en')
                                     input#descrizione.form-control.validate(type='text', name='descrizione', placeholder='Descrizione')
                                     label(data-error='wrong', data-success='right', for='descrizione') Descrizione
                             .modal-footer.d-flex.justify-content-center
-                                button.btn.btn-primary.btn-block(type='button', onclick='updateInteresse();') Salva
+                                button.btn.btn-primary.btn-block(type='button', onclick='btnModalUpdateInteresse();') Salva
 
                 // MODAL AGGIUNGI INTERESSE
                 #modalAggiungiInteressi.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalAggiungiInteressi', aria-hidden='true')
@@ -178,7 +178,9 @@ html(lang='en')
                                     input#descrizione2.form-control.validate(type='text', name='descrizione2', placeholder='Descrizione')
                                     label(data-error='wrong', data-success='right', for='descrizione2') Descrizione
                             .modal-footer.d-flex.justify-content-center
-                                button.btn.btn-primary.btn-block(type='button', onclick='addInteresse();') Salva
+                                button.btn.btn-primary.btn-block(type='button', onclick='btnModalAddInteresse();') Salva
+
+
 
                 .container-fluid.mx-auto
                     // Jumbotron
@@ -197,7 +199,7 @@ html(lang='en')
                     .col-sm-2
                         button#modificaInteresse.btn.btn-primary.btn-lg(onclick='openModalUpdate();') Modifica Interesse
                     .col-sm-2
-                        button#eliminaInteresse.btn.btn-primary.btn-lg(onclick='eliminaInteresse();') Elimina Interesse
+                        button#eliminaInteresse.btn.btn-primary.btn-lg(onclick='btnEliminaInteresse();') Elimina Interesse
                 br
                 .row.mx-3
                     .col-sm-12.table-responsive

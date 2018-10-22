@@ -134,11 +134,6 @@ function bs_input_file() {
 
 $(function () {
     bs_input_file();
-    //$('#dataEvento').datepicker({dateFormat: 'dd/mm/yy'}).css('z-index', 100000000);
-    //$('#dataEventoFine').datepicker({dateFormat: 'dd/mm/yy'}).css('z-index', 100000000);
-    //$('#dataEvento2').datepicker({dateFormat: 'dd/mm/yy'}).css('z-index', 100000000);
-    //$('#dataEventoFine2').datepicker({dateFormat: 'dd/mm/yy'}).css('z-index', 100000000);
-
     var dateFormat = "dd-mm-yy",
         dataEvento = $("#dataEvento")
             .datepicker({
@@ -267,7 +262,7 @@ function updateEvento() {
     datiEvento.relatori = $('#relatoriEvento').val();
     datiEvento.descrizione = $('#descrizioneEvento').val();
     datiEvento.url_evento = $('#urlEvento').val();
-    datiEvento.immagine = $('#caricaFoto').val();
+    //datiEvento.immagine = $('#caricaFoto').val();
 
     $.ajax({
         url: '/getUpdateEventi',
@@ -362,7 +357,7 @@ function addEvento() {
     datiEvento.relatori = $('#relatoriEvento2').val();
     datiEvento.descrizione = $('#descrizioneEvento2').val();
     datiEvento.url_evento = $('#urlEvento2').val();
-    datiEvento.immagine = $('#caricaFoto2').val();
+    //datiEvento.immagine = $('#caricaFoto2').val();
     datiEvento.tipo = 1;
 
     if (

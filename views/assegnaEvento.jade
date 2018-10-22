@@ -173,6 +173,7 @@ html(lang='en')
                             .modal-footer.justify-content-center
                                 a.btn.btn-primary(type='button', data-dismiss='modal')
                                     | Ok
+
                 #myModal3.modal.fade.left(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
                     .modal-dialog(role='document')
                         // Content
@@ -190,6 +191,8 @@ html(lang='en')
                             .modal-footer.justify-content-center
                                 a.btn.btn-primary(type='button', data-dismiss='modal')
                                     | Ok
+
+
                 .container-fluid.mt-5
                     .jumbotron
                         h1.h1-reponsive.mb-3.blue-text
@@ -199,6 +202,141 @@ html(lang='en')
                         hr.my-4
                         p
                             | Scelgi tra tre differenti modalità d'ingaggio: SMS, E-Mail, Push.
+                    .card.m-3
+                        .card-body
+                            // Vertical Steppers
+                            .row.mt-1
+                                .col-md-12
+                                    // Stepers Wrapper
+                                    ul.stepper.stepper-vertical
+                                        // First Step
+                                        li.active#stepUno
+                                            a(href='#!')
+                                                span.circle 1
+                                                span.label Scegli un opzione
+
+                                            .step-content.col-md-6#contenutoStepUno
+                                                .row
+                                                    .col-6
+                                                        h4 Invia Evento
+                                                        label.bs-switch(for='invioEvento')
+                                                            input#invioEvento(name='someSwitchOption001', type='checkbox', autocomplete='off' onchange='switchTableEvent();')
+                                                            span.slider.round
+                                                    .col-6
+                                                        h4 Invia Nota Informativa
+                                                        label.bs-switch(for='invioNotainformativa')
+                                                            input#invioNotainformativa(name='someSwitchOption002', type='checkbox', autocomplete='off' onchange='switchTableEvent();')
+                                                            span.slider.round
+                                                .row
+                                                    button#btnConfermaStepUno.waves-effect.waves-dark.btn.btn-md.btn-primary.next-step(onclick='passaStepDue();') Continua
+                                        // Second Step
+                                        li#stepDue
+                                            // Section Title
+                                            a(href='#!')
+                                                span.circle 2
+                                                span.label Seleziona Evento
+                                            // Section Description
+                                            .step-content.col-md-12#contenutoStepDue
+                                                .container-fluid
+                                                    .row
+                                                        .md-form.col-md-6
+                                                            i.fa.fa-calendar.prefix(aria-hidden='true')
+                                                            label.cols-sm-2.control-label(for='dataEvento') Dal giorno:
+                                                            input#dataEvento.form-control(type='text', name="dataEvento", readonly="readonly", placeholder='GG/MM/AAAA')
+                                                .container-fluid#conteinerHideEvento
+                                                    .row.mx-2
+                                                        .col-md-12.table-responsive
+                                                            table#tabellaEventi.table.table-striped.table-bordered(width='100%', cellspacing='0')
+                                                                thead
+                                                                    tr
+                                                                        th
+                                                                        th Titolo Evento
+                                                                        th Sottotitolo Evento
+                                                                        th Luogo
+                                                                        th Data Inizio
+                                                                        th Data Fine
+                                                                        th Relatori
+                                                                tfoot
+                                                                    tr
+                                                                        th
+                                                                        th Titolo Evento
+                                                                        th Sottotitolo Evento
+                                                                        th Luogo
+                                                                        th Data Inizio
+                                                                        th Data Fine
+                                                                        th Relatori
+                                                .row
+                                                    .col-md-3
+                                                        button#btnAnnullaStepDue.waves-effect.waves-dark.btn.btn-md.btn-secondary.previous-step(onclick='inizializzaPagina();') Annulla
+                                                    .col-md-3
+                                                        button#btnConfermaStepDue.waves-effect.waves-dark.btn.btn-md.btn-primary.next-step(onclick='passaStepTre();') Continua
+
+                                        // Third Step
+                                        li#stepTre
+                                            a(href='#!')
+                                                span.circle 3
+                                                span.label Seleziona modalità di invio e utenti
+                                            .step-content.col-md-12#contenutoStepTre
+                                                .container-fluid.mx-3#conteinerHideModalita
+                                                    .row
+                                                        .col-sm-4
+                                                            h3 Seleziona modalità di comunicazione
+                                                        .col-sm-2
+                                                        .col-sm-4
+                                                            h3 Seleziona modalità d'interesse
+                                                    .row
+                                                        .col-sm-2
+                                                            h4 Push Notifications
+                                                            label.bs-switch(for='invioPush')
+                                                                input#invioPush(name='someSwitchOption001', type='checkbox', autocomplete='off', onchange='switchTableModalitaInvio();')
+                                                                span.slider.round
+                                                        .col-sm-2
+                                                            h4 E-mail
+                                                            label.bs-switch(for='invioEmail')
+                                                                input#invioEmail(name='someSwitchOption001', type='checkbox', autocomplete='off', onchange='switchTableModalitaInvio();')
+                                                                span.slider.round
+                                                        .col-sm-2
+                                                            h4 SMS
+                                                            label.bs-switch(for='invioSms')
+                                                                input#invioSms(name='someSwitchOption001', type='checkbox', autocomplete='off', onchange='switchTableModalitaInvio();')
+                                                                span.slider.round
+                                                        .col-sm-6
+                                                            label.col-sm-2.control-label(for='interessi') Interessi
+                                                            .col-sm-10
+                                                                .input-group
+                                                                    .input-group-prepend
+                                                                        span#basic-addon1.input-group-addon
+                                                                            i.fa.fa-hashtag(aria-hidden='true')
+                                                                    input#interessi.form-control(type='text', placeholder='Interessi', aria-describedby='basic-addon1', name='interessi', onchange='switchTableModalitaInvio();')
+                                                .container-fluid#conteinerHideUtenti
+                                                    .row.mx-2
+                                                        .col-md-12.table-responsive
+                                                            table#tabellaUtenti.table.table-striped.table-bordered(width='100%', cellspacing='0')
+                                                                thead
+                                                                    tr
+                                                                        th id
+                                                                        th Username
+                                                                        th Cognome
+                                                                        th Nome
+                                                                        th Professione
+                                                                        th Residenza
+                                                .row#btnStepTre
+                                                    .col-md-3
+                                                        button#btnAnnullaStepTre.waves-effect.waves-dark.btn.btn-md.btn-secondary.previous-step(onclick='inizializzaPagina();') Annulla
+                                                    .col-md-3
+                                                        button#btnConfermaStepTre.waves-effect.waves-dark.btn.btn-md.btn-primary.next-step(onclick='passaStepQuattro();') Continua
+                                        // Fourth Step
+                                        li#stepQuattro
+                                            a(href='#!')
+                                                span.circle 4
+                                                span.label Invia
+                                    // /.Stepers Wrapper
+                                    // Steppers Navigation
+                                    .row.mt-1#contenutoStepQuattro
+                                        .col-md-12.text-lg-center
+                                            button#btnAnnullaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-secondary.previous-step(onclick='inizializzaPagina();') Annulla
+                                            button#btnConfermaStepQuattro.waves-effect.waves-dark.btn.btn-lg.btn-primary.next-step Invia
+                                    // /.Vertical Steppers
 
                     .row
                         .col-sm-4

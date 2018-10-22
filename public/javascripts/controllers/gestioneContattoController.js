@@ -202,7 +202,7 @@ datiUtente = {
 function updateUtente(){
 
     datiUtente._id = arrayUtenti[0]._id;
-    datiUtente.username = $('#username').val();
+    datiUtente.username = $('#username').val().toUpperCase();
     datiUtente.password = $('#password').val();
     datiUtente.specializzazione = $('#specializzazione').val();
     datiUtente.nome = $('#nome').val();
@@ -290,7 +290,7 @@ function AddUtente(){
     datiContatto.specializzazione = $('#specializzazione2').val();
     datiContatto.provincia = $('#provincia2').val();
     datiContatto.mail = $('#mail2').val();
-    datiContatto.username = $('#username2').val();
+    datiContatto.username = $('#username2').val().toUpperCase();
     datiContatto.password = $('#password2').val();
     datiContatto.numero_telefono = $('#telefono2').val();
     datiContatto.pec = $('#pec2').val();
@@ -451,5 +451,4 @@ function addInteresse(){
 
         }
     });
-
 }

@@ -1,10 +1,13 @@
 let arrayInteressi = {};
 
+let datiInteressi = {
+    "_id" : undefined,
+    "interesse" : undefined,
+    "descrizione" : undefined
+};
+
+
 $(document).ready(function () {
-    setTimeout(function(){
-        $('body').addClass('loaded');
-        $('h1').css('color','#222222');
-    }, 900);
     $('#modificaInteresse').prop('disabled', true);
     $('#eliminaInteresse').prop('disabled', true);
 
@@ -53,7 +56,7 @@ $(document).ready(function () {
     });
 });
 
-function  openModalUpdate() {
+function openModalUpdate() {
 
     let ids1 = $.map(tabInteressi.rows('.selected').data(), function (item) {
         return item;
@@ -84,7 +87,7 @@ function  openModalUpdate() {
     $('#descrizione').val(arrayInteressi[0].descrizione);
 }
 
-function  openModalAdd() {
+function openModalAdd() {
 
     $("#interesse2").val('');
     $("#descrizione2").val('');
@@ -110,46 +113,7 @@ function  openModalAdd() {
 
 }
 
-datiInteressi = {
-    "_id" : undefined,
-    "interesse" : undefined,
-    "descrizione" : undefined
-};
-
-function updateInteresse(){
-
-    datiInteressi._id = arrayInteressi[0]._id;
-    datiInteressi.interesse = $('#interesse').val();
-    datiInteressi.descrizione = $('#descrizione').val();
-    if(datiInteressi.interesse === '' || datiInteressi.descrizione )
-        alert("Riempi i campi richiesti");
-    else {
-        $.ajax({
-            url: '/getUpdateInteressi',
-            type: 'POST',
-            data: JSON.stringify(datiInteressi),
-            cache: false,
-            contentType: 'application/json',
-            success: function (data) {
-
-                if (data.errore === false) {
-
-                    $("#modalModificaInteressi").modal('hide');
-                    $('#modificaInteresse').prop('disabled', true);
-                    $('#eliminaInteresse').prop('disabled', true);
-                    tabInteressi.ajax.reload();
-
-                }
-
-            },
-            faliure: function (data) {
-
-            }
-        });
-    }
-}
-
-function eliminaInteresse(){
+function btnEliminaInteresse(){
 
     let ids1 = $.map(tabInteressi.rows('.selected').data(), function (item) {
         return item;
@@ -178,7 +142,38 @@ function eliminaInteresse(){
 
 }
 
-function addInteresse(){
+function btnModalUpdateInteresse(){
+
+    datiInteressi._id = arrayInteressi[0]._id;
+    datiInteressi.interesse = $('#interesse').val();
+    datiInteressi.descrizione = $('#descrizione').val();
+    if(datiInteressi.interesse === '' || datiInteressi.descrizione === '')
+        alert("Riempi i campi richiesti");
+
+    else {
+        $.ajax({
+            url: '/getUpdateInteressi',
+            type: 'POST',
+            data: JSON.stringify(datiInteressi),
+            cache: false,
+            contentType: 'application/json',
+            success: function (data) {
+
+                if (data.errore === false) {
+                    $("#modalModificaInteressi").modal('hide');
+                    $('#modificaInteresse').prop('disabled', true);
+                    $('#eliminaInteresse').prop('disabled', true);
+                    tabInteressi.ajax.reload();
+                }
+            },
+            faliure: function (data) {
+
+            }
+        });
+    }
+}
+
+function btnModalAddInteresse(){
 
     datiInteressi.interesse = $('#interesse2').val();
     datiInteressi.descrizione = $('#descrizione2').val();
