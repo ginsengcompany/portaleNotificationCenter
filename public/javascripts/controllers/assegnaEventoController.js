@@ -11,11 +11,11 @@ $(document).ready(function () {
 
     tabUtenti.on( 'click', 'tr', function () {
         $(this).toggleClass('selected');
-        if ($(this).hasClass('selected')) {
+        if (tabUtenti.rows( '.selected' ).count() > 0) {
             $('#btnConfermaStepTre').show();
-        }else
+        }else {
             $('#btnConfermaStepTre').hide();
-        console.log('click');
+        }
     } );
 
 
@@ -91,16 +91,14 @@ $(document).ready(function () {
 
 function inizializzaPagina() {
     moment.locale('it');
-    $('#hideInfo').hide();
+    $('#btnConfermaStepUno').hide();
+    $('#btnConfermaStepTre').hide();
     $('#conteinerHideEvento').hide();
     $('#conteinerHideUtenti').hide();
     $('#conteinerHideModalita').hide();
-    $('#conteinerHideData').hide();
-    $('#titoloSeleziona').hide();
     $('#contenutoStepDue').hide();
     $('#contenutoStepTre').hide();
     $('#contenutoStepQuattro').hide();
-    $('#btnConfermaStepTre').hide();
     $("#stepUno").addClass("active");
     $("#stepDue").removeClass("active");
     $("#stepTre").removeClass("active");
@@ -145,20 +143,16 @@ function passaStepQuattro() {
 }
 
 function switchTableEvent() {
-    $('#hideinfo').hide();
+    $('#btnConfermaStepUno').hide();
     if ($('#invioEvento').is(":checked")) {
         $('#invioEvento').prop("disabled", false);
         $('#invioNotainformativa').prop("disabled", true);
         $('#btnConfermaStepUno').show();
-        $('#hideinfo').hide();
-        $('#conteinerHideData').show();
     }
     else if ($('#invioNotainformativa').is(":checked")) {
-        $('#invioNotainformativa').prop("disabled", false);
         $('#invioEvento').prop("disabled", true);
-        $('#hideinfo').hide();
-        $('#titoloSeleziona').hide();
-        $('#conteinerHideData').hide();
+        $('#invioNotainformativa').prop("disabled", false);
+        $('#btnConfermaStepUno').show();
     }
     $("#dataEvento").datepicker({
         defaultDate: "+1w",
@@ -166,11 +160,8 @@ function switchTableEvent() {
         numberOfMonths: 2,
         dateFormat: 'dd/mm/yy',
         onSelect: function (dateText, inst) {
-            $('#hideinfo').hide();
             if (dateText) {
                 $('#conteinerHideModalita').show();
-                $('#titoloSeleziona').show();
-                $('#hideInfo').hide();
                 $.ajax({
                     type: "POST",
                     url: "/getEventiData",
@@ -178,7 +169,6 @@ function switchTableEvent() {
                     contentType: 'text/plain',
                     success: function (data, textStatus, jqXHR) {
                         if ($('#invioEvento').prop('checked') === true && $('#invioNotainformativa').prop('checked') === false) {
-                            $('#hideInfo').hide();
                             $('#tabellaEventi').dataTable().show();
                             $('#tabellaEventi').dataTable().fnDestroy();
                             $('#conteinerHideEvento').show();
@@ -217,8 +207,7 @@ function switchTableEvent() {
                                         return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
                                     }
                                     },
-                                    {"data": "relatori"},
-
+                                    {"data": "relatori"}
                                 ]
                             });
                             tabEventi.columns().every(function () {
@@ -235,17 +224,16 @@ function switchTableEvent() {
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
+
                     }
                 });
             }
         }
     });
 
-
     if ($('#invioNotainformativa').prop('checked') === true) {
         $('#invioEvento').attr("checked", false);
         $('#btnConfermaStepUno').show();
-        $('#hideInfo').hide();
         $('#tabellaEventi').dataTable().show();
         $('#tabellaEventi').dataTable().fnDestroy();
         $('#conteinerHideEvento').show();
@@ -289,7 +277,6 @@ function switchTableEvent() {
                 }, "visible": false
                 },
                 {"data": "relatori", "visible": false}
-
             ]
         });
     }
@@ -299,13 +286,12 @@ function switchTableEvent() {
         $('#invioNotainformativa').prop("disabled", false);
         $('#conteinerHideEvento').hide();
         $('#conteinerHideModalita').hide();
-        $('#conteinerHideData').hide();
-        $('#hideInfo').hide();
         $('#tabellaEventi').dataTable().hide();
         $('#tabellaEventi').dataTable().fnDestroy();
         $('#tabellaEventi').dataTable().fnClearTable();
     }
 }
+
 /*
 let something = (function () {
     let executed = false;
@@ -317,7 +303,6 @@ let something = (function () {
                 if ($(this).hasClass('selected')) {
                     $('#btnConfermaStepTre').show();
                 } else {
-                    console.log($(this).toggleClass('selected'));
                     $('#btnConfermaStepTre').hide();
                 }
             });
@@ -325,7 +310,6 @@ let something = (function () {
     };
 })();
 */
-
 
 function generaTabUtenti(rotteUtenti) {
     if (tabUtenti) {
@@ -362,7 +346,6 @@ function generaTabUtenti(rotteUtenti) {
             {"data": "provincia"}
         ]
     });
-   // something();
     return tab;
 }
 
@@ -439,22 +422,6 @@ function switchTableModalitaInvio() {
     }
     $('#btnAnnullaStepTre').show();
 }
-$('#tabellaUtenti tbody').on('click', 'tr', function () {
-    console.log(tabUtenti.rows( '.selected' ).count());
-    console.log(tabUtenti.rows( '.selected' ).data().length);
-    if(tabUtenti.rows( '.selected' ).count()>0){
-        $('#btnConfermaStepTre').show();
-    }else
-        $('#btnConfermaStepTre').hide();
-    /*if ($(this).hasClass('selected')) {
-        $(this).removeClass('selected');
-        $('#btnConfermaStepTre').hide();
-    } else {
-        tabUtenti.rows().deselect();
-        $(this).toggleClass('selected');
-        $('#btnConfermaStepTre').show();
-    }*/
-});
 
 let successMessage = function (idUtente, idEvento, tipo, tipoEvento) {
 
@@ -518,7 +485,6 @@ let successMessage = function (idUtente, idEvento, tipo, tipoEvento) {
 
                 tabUtenti.ajax.reload();
             }
-
         },
         faliure: function (data) {
             console.log('Errore!');
