@@ -11,14 +11,6 @@ let connectionPostgres = function () {
 };
 
 
-let datiEmail = {
-    "to":undefined,
-    "subject":undefined,
-    "html": undefined,
-    "arrayEventi" : undefined,
-    "arrayUtenti" : undefined,
-    "tb_notifica" : undefined
-};
 
 function switchInvio(final,datiTab){
         for(let i=0;i<final.length;i++){
@@ -27,6 +19,15 @@ function switchInvio(final,datiTab){
 }
 
 function posyQuery(indice,datiTab) {
+    let datiEmail = {
+        "to":undefined,
+        "subject":undefined,
+        "html": undefined,
+        "arrayEventi" : undefined,
+        "arrayUtenti" : undefined,
+        "tb_notifica" : undefined
+    };
+
 
     var client = connectionPostgres();
 
@@ -48,7 +49,7 @@ function posyQuery(indice,datiTab) {
             let myOjb = JSON.stringify(result.rows, null, "    ");
             datiEmail.arrayUtenti = JSON.parse(myOjb)[0];
 
-            /*if(indice.tipo==='Push Notifications'){
+            if(indice.tipo==='Push Notifications'){
 
                 if(datiEmail.arrayEventi && datiEmail.arrayUtenti){
                     let restKey = 'OTM3ZGZiOGUtZjNiYS00YTAxLWFjYmMtMDRjN2I2NjE5MWE2';
@@ -98,10 +99,9 @@ function posyQuery(indice,datiTab) {
                     },3000);
 
                 }
+            }
 
-            }*/
-
-             if(indice.tipo==='E-mail'){
+             else if(indice.tipo==='E-mail'){
 
                 if(datiEmail.arrayEventi && datiEmail.arrayUtenti){
                     datiEmail.to = indice.mail;
@@ -185,7 +185,7 @@ function posyQuery(indice,datiTab) {
                                             " Sottotitolo: "+datiEmail.arrayEventi.sottotitolo +"\n"+
                                             "Partecipa --->"+link[0]+" Declina --->"+link[1],
                                             "message_type": "N",
-                                            "sender": "+393458184794"
+                                            "sender": "+393711823424"
                                         }
                                     };
                                     const options1 = {
