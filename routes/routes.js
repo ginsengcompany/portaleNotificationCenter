@@ -73,4 +73,8 @@ module.exports = function (app) {
         res.redirect('/');
     });
 
+    app.get('/privacy', function (req, res, next) {
+        delete req.session.authenticated;
+        res.render('privacy');
+    });
 };
