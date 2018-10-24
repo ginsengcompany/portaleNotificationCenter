@@ -16,8 +16,15 @@ module.exports = function (app) {
     });
 
     app.get('/assegnaEvento', function (req, res, next) {
-        let  mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
-        res.render('assegnaEvento', { name: mutiOrg[0].descrizione, logo_org: mutiOrg[0].logo_org });
+        let smsAttivo = req.session.sms_attivo;
+        let x = '';
+        if (smsAttivo === true){
+            x = 'visible';
+        } else {
+            x = 'hidden';
+        }
+        let mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
+        res.render('assegnaEvento', { name: mutiOrg[0].descrizione, logo_org: mutiOrg[0].logo_org, smsAttivo : x });
     });
 
     app.get('/gestioneNotifiche', function (req, res, next) {
@@ -73,4 +80,8 @@ module.exports = function (app) {
         res.redirect('/');
     });
 
+    app.get('/privacy', function (req, res, next) {
+        delete req.session.authenticated;
+        res.render('privacy');
+    });
 };

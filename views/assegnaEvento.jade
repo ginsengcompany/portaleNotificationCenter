@@ -296,9 +296,9 @@ html(lang='en')
                                                                 input#invioEmail(name='someSwitchOption001', type='checkbox', autocomplete='off', onchange='switchTableModalitaInvio();')
                                                                 span.slider.round
                                                         .col-sm-2
-                                                            h4 SMS
-                                                            label.bs-switch(for='invioSms')
-                                                                input#invioSms(name='someSwitchOption001', type='checkbox', autocomplete='off', onchange='switchTableModalitaInvio();')
+                                                            h4(style="visibility:#{smsAttivo};") SMS
+                                                            label.bs-switch(for='invioSms', style="visibility:#{smsAttivo};")
+                                                                input#invioSms(name='someSwitchOption001', type='checkbox', autocomplete='off', onchange='switchTableModalitaInvio();', style="visibility:#{smsAttivo};")
                                                                 span.slider.round
                                                         .col-sm-6
                                                             label.col-sm-2.control-label(for='interessi') Interessi
