@@ -14,10 +14,17 @@ router.post('/',function (req, res, next) {
     let datiEmail = req.body;
 
     let transporter = nodemailer.createTransport({
-        service: config.serviceEmail.service,
+        /*service: config.serviceEmail.service,
         auth: {
             user: config.serviceEmail.user,
             pass: config.serviceEmail.pass
+        }*/
+        host: 'smtp.gesan.it',
+        secure: false,
+        port:587,
+        auth: {
+            user: 'alessio.calabrese@ak12srl.it',
+            pass: 'alessio16'
         }
     });
 
@@ -353,7 +360,7 @@ router.post('/',function (req, res, next) {
 
 
     let mailOptions = {
-        from: config.serviceEmail.from,
+        from: 'noreply@ak12srl.it',
         to: datiEmail.to,
         subject: datiEmail.subject,
         html: html
