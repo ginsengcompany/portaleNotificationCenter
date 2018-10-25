@@ -192,8 +192,13 @@ html(lang='en')
                                 .row
                                     .md-form.col-md-6
                                         //i.fa.fa-hashtag.prefix(aria-hidden='true')
-                                        label.cols-sm-2.control-label.active(for='interessi') Interessi
-                                        input#interessi.form-control(type='text', name='interessi', placeholder='Interessi')
+                                        label.cols-sm-6.control-label.active(for='interessi') Interessi
+                                        .cols-sm-10
+                                            .input-group.mb-3
+                                                .input-group-prepend
+                                                    span#basic-addon1.input-group-addon
+                                                        i.fa.fa-hashtag(aria-hidden='true')
+                                                input#interessi.form-control(type='text', placeholder='Interessi', aria-describedby='basic-addon1', name='interessi2')
                                     .md-form.col-md-6
                                         label.cols-sm-4.control-label.active(for='AggiungiInteresse') Gestione Interessi
                                         button#AggiungiInteresse.btn.btn-primary(type='button', onclick='openModalAdd();') Aggiungi Interesse
@@ -262,16 +267,13 @@ html(lang='en')
                                         input#pec2.form-control(type='text', name='pec2', placeholder='posta elettronica certificata')
                                 .row
                                     .md-form.col-md-6
-                                        label.cols-sm-2.control-label.active(for='interessi2') Interessi
-                                        input#interessi2.form-control(type='text', name='interessi2', placeholder='Interessi')
-                                    //.col-md-6
-                                    //    label.cols-sm-6.control-label(for='interessi2') Interessi
-                                    //    .cols-sm-10
-                                    //        .input-group.mb-3
-                                    //            .input-group-prepend
-                                    //                span#basic-addon1.input-group-addon
-                                    //                    i.fa.fa-hashtag(aria-hidden='true')
-                                    //            input#interessi2.form-control(type='text', placeholder='Interessi', aria-describedby='basic-addon1', name='interessi2')
+                                        label.cols-sm-6.control-label.active(for='interessi2') Interessi
+                                        .cols-sm-10
+                                            .input-group.mb-3
+                                                .input-group-prepend
+                                                    span#basic-addon1.input-group-addon
+                                                        i.fa.fa-hashtag(aria-hidden='true')
+                                                input#interessi2.form-control(type='text', placeholder='Interessi', aria-describedby='basic-addon1', name='interessi2')
                                     .md-form.col-md-6
                                         label.cols-sm-4.control-label.active(for='AggiungiInteresse') Gestione Interessi
                                         button#AggiungiInteresse.btn.btn-primary(onclick='openModalAdd();') Aggiungi Interesse
