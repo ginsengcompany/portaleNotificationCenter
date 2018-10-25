@@ -1,33 +1,57 @@
 doctype html
 html(lang='en')
     head
-        title Notifications Center
+        // Required meta tags always come first
         meta(charset='utf-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css')
-        //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-        link(rel='stylesheet', href='stylesheets/bootstrap.css')
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js')
-        script(src='https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js')
-
-    body(style='padding-top: 75px;')
-        block myNav
-
-        block myContainer
-            .container
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(http-equiv='x-ua-compatible', content='ie=edge')
+        title Notifications Center
+        // Font Awesome
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css')
+        // Bootstrap core CSS
+        link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+        link(href='stylesheets/custom.css', rel='stylesheet')
+        // Material Design Bootstrap
+        link(href='stylesheets/mdb.min.css', rel='stylesheet')
+        link(rel="stylesheet", type="text/css", href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css")
+        link(rel='stylesheet', href='http://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/ui-lightness/jquery-ui.css', type='text/css', media='all')
+        link(rel='icon', type='image/png', href='images/ico.png')
+    body.hidden-sn.mdb-skin
+        // Main Layout
+        main
+            .container-fluid
                 .jumbotron
-                    .row
-                        h1(align="center") Notifications Center - Hai scelto di partecipare!
+                    h1.h1-reponsive.mb-3.blue-text
+                        strong Notification Center
+                    p.lead
+                        | Notifications Center - Hai scelto di partecipare!
+                    hr.my-4
+                    p
+                        | Grazie della collaborazione.
 
-                .card.card-container
-                    img#logoCenter.img-responsive(src='images/centerLogo.svg', style='margin:0 auto;')
-                .card.card-container
-                    img#logoAk12.img-responsive(src='images/ak12.png', style='margin:0 auto; width:150px;')
+                    .text-center
+                        img.rounded(src='images/centerLogo.svg')
 
-            br
-            br
-            br
-            br
-    block myScript
+            footer.page-footer.font-small.mdb-skin.fixed-bottom
+                // Copyright
+                .footer-copyright.text-center.py-3
+                    | © Copyright 2018 - AK-12. All Rights Reserved:
+                    a(target='_blank', href='http://www.ak12srl.it/')
+                        // TO DO: inserire immagine con scritta bianca
+                        //img(src='images/ak12.png', alt='Company Logo', width='70', height='30')
+                // Copyright
+            // Footer
+            // SCRIPTS
+            // JQuery
+            script(type='text/javascript', src='javascripts/jquery-3.3.1.min.js')
+            // Popper
+            script(type='text/javascript', src='javascripts/popper.min.js')
+            // Bootstrap core JavaScript
+            script(src='javascripts/bootstrap.min.js')
+            // MDB core JavaScript
+            script(type='text/javascript', src='javascripts/mdb.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js')
+            script(src='https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js')
+            script(src='javascripts/modernizr.js')
+            // Tooltips
+            script(src="javascripts/controllers/loginController.js")

@@ -54,7 +54,7 @@ module.exports = function (app) {
 
     app.get('/partecipato', function (req, res, next) {
         let  mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
-        res.render('partecipato', { name: mutiOrg[0].descrizione, logo_org: mutiOrg[0].logo_org });
+        res.render('partecipato', { logo_org: mutiOrg[0].logo_org });
     });
 
     app.get('/gestioneInteressi', function (req, res, next) {
