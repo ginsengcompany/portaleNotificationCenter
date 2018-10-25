@@ -67,7 +67,7 @@ router.post('/',function (req, res, next) {
             '</div>'+
             '<div class="header" style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);" id="emb-email-header-container">'+
             '<div class="logo emb-logo-margin-box" style="font-size: 26px;line-height: 32px;Margin-top: 6px;Margin-bottom: 20px;color: #c3ced9;font-family: Roboto,Tahoma,sans-serif;Margin-left: 20px;Margin-right: 20px;" align="center">'+
-            '<div class="logo-center" align="center" id="emb-email-header"><img style="display: block;height: auto;width: 100%;border: 0;max-width: 560px;" src="http://omceoce.ak12srl.it/images/intestazionemail.png" alt="" width="560" /></div>'+
+            '<div class="logo-center" align="center" id="emb-email-header"><img style="display: block;height: auto;width: 100%;border: 0;max-width: 560px;" src="https://notification-center.ak12srl.it/images/intestazionemail.png" alt="" width="560" /></div>'+
             '</div>'+
             '</div>'+
             '</div>'+
@@ -181,7 +181,7 @@ router.post('/',function (req, res, next) {
             '</div>'+
             '<div class="header" style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);" id="emb-email-header-container">'+
             '<div class="logo emb-logo-margin-box" style="font-size: 26px;line-height: 32px;Margin-top: 6px;Margin-bottom: 20px;color: #c3ced9;font-family: Roboto,Tahoma,sans-serif;Margin-left: 20px;Margin-right: 20px;" align="center">'+
-            '<div class="logo-center" align="center" id="emb-email-header"><img style="display: block;height: auto;width: 100%;border: 0;max-width: 560px;" src="http://omceoce.ak12srl.it/images/intestazionemail.png" alt="" width="560" /></div>'+
+            '<div class="logo-center" align="center" id="emb-email-header"><img style="display: block;height: auto;width: 100%;border: 0;max-width: 560px;" src="https://notification-center.ak12srl.it/images/intestazionemail.png" alt="" width="560" /></div>'+
             '</div>'+
             '</div>'+
             '</div>'+
@@ -320,9 +320,9 @@ router.post('/',function (req, res, next) {
 
             '<div style="Margin-left: 20px;Margin-right: 20px;">'+
             '<div style="mso-line-height-rule: exactly;mso-text-raise: 4px;">'+
-            '<a style="border-radius: 3px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: green;font-family: Georgia, serif;" href="http://omceoce.ak12srl.it/switchForEmail?confermato=true&eliminato=false&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiEmail.tb_notifica+'">Partecipa</a>'+
+            '<a style="border-radius: 3px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: green;font-family: Georgia, serif;" href="https://notification-center.ak12srl.it/switchForEmail?confermato=true&eliminato=false&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiEmail.tb_notifica+'">Partecipa</a>'+
             '&nbsp;'+
-            '<a style="border-radius: 3px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: red;font-family: Georgia, serif;" href="http://omceoce.ak12srl.it/switchForEmail?confermato=false&eliminato=true&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiEmail.tb_notifica+'">Declina</a>'+
+            '<a style="border-radius: 3px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: red;font-family: Georgia, serif;" href="https://notification-center.ak12srl.it/switchForEmail?confermato=false&eliminato=true&idUtente='+datiEmail.arrayUtenti._id+'&idEvento='+datiEmail.arrayEventi._id+'&tb_notifica='+datiEmail.tb_notifica+'">Declina</a>'+
             '</div>'+
             '</div>'+
 

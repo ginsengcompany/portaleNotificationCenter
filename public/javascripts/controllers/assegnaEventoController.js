@@ -455,7 +455,6 @@ let successMessage = function (idUtente, idEvento, tipo, tipoEvento) {
                 $("#myModal1").on("show", function () {
                     $("#myModal1 a.btn").on("click", function (e) {
                         $("#myModal1").modal('hide');
-                        window.location.reload(true);
                     });
                 });
                 $("#myModal1").on("hide", function () {
@@ -480,6 +479,10 @@ let successMessage = function (idUtente, idEvento, tipo, tipoEvento) {
         }
     });
 };
+
+$('#myModal1').on('hidden.bs.modal', function () {
+    location.reload();
+})
 
 function salvaDati() {
 
