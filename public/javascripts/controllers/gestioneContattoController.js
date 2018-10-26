@@ -1,6 +1,18 @@
 let arrayUtenti = {};
 
 $(document).ready(function () {
+    function format(d) {
+        return '<table cellpadding="50" cellspacing="20" border="0" style="padding-left:50px;">' +
+            '<tr>' +
+            '<td style="font-weight: bold;">Pec: </td>' +
+            '<td>' + d.pec + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td style="font-weight: bold;">Interessi: </td>' +
+            '<td>' + d.interessi + '</td>' +
+            '</tr>' +
+            '</table>';
+        }
     $.ajax({
         url: '/getInteressi',
         type: 'GET',
@@ -66,6 +78,12 @@ $(document).ready(function () {
             cache: false
         },
         columns: [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
             {"data": "username"},
             {"data": "password"},
             {"data": "cognome"},
@@ -74,10 +92,9 @@ $(document).ready(function () {
             {"data": "provincia"},
             {"data": "mail"},
             {"data": "numero_telefono"},
-            {"data": "pec"},
-            {"data": "interessi"}
         ],
         "rowCallback": function( row, data, index ) {
+            console.log(data);
             if (data.attivo === false) {
                 $('td', row).css('background-color', 'Red');
                 $('td', row).css('color', 'White');

@@ -110,6 +110,8 @@ function inizializzaPagina() {
     $('#invioPush').prop('checked', false);
     $('#invioEmail').prop('checked', false);
     $('#invioSms').prop('checked', false);
+    $('#invioNotainformativa').prop("disabled", false);
+    $('#invioEvento').prop("disabled", false);
     $('#tabellaEventi').dataTable().hide();
     $('#tabellaEventi').dataTable().fnDestroy();
     $('#tabellaEventi').dataTable().fnClearTable();
@@ -134,6 +136,14 @@ function passaStepTre() {
         $("#stepDue").removeClass("active");
         $("#stepTre").addClass("active");
         $('#contenutoStepTre').show();
+        let ids1 = $.map(tabEventi.rows('.selected').data(), function (item) {
+            return item;
+        });
+        arrayEventi = ids1;
+        if ($('#invioEvento').is(":checked"))
+        $("#lblStepTre").text("Seleziona modalità di invio e utenti per l'evento: " + arrayEventi[0].titolo );
+        else
+            $("#lblStepTre").text("Seleziona modalità di invio e utenti per la nota: " + arrayEventi[0].titolo );
     });
 }
 function passaStepQuattro() {
@@ -152,6 +162,7 @@ function passaStepQuattro() {
 function switchTableEvent() {
     $('#btnConfermaStepUno').hide();
     if ($('#invioEvento').is(":checked")) {
+        $("#lblStepDue").text("Seleziona Evento");
         $('#invioEvento').prop("disabled", false);
         $('#invioNotainformativa').prop("disabled", true);
         $('#btnConfermaStepUno').show();
@@ -239,6 +250,7 @@ function switchTableEvent() {
     });
 
     if ($('#invioNotainformativa').prop('checked') === true) {
+        $("#lblStepDue").text("Seleziona Nota");
         $('#invioEvento').attr("checked", false);
         $('#btnConfermaStepUno').show();
         $('#tabellaEventi').dataTable().show();
@@ -266,6 +278,7 @@ function switchTableEvent() {
                 {
                     "data": "data", "render": function (data) {
                     function pad(s) {
+                        console.log(data);
                         return (s < 10) ? '0' + s : s;
                     }
 

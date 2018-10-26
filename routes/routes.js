@@ -44,12 +44,12 @@ module.exports = function (app) {
 
     app.get('/gestioneContatto', function (req, res, next) {
         let  mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
-        res.render('gestioneContatto', { name: mutiOrg[0].descrizione, logo_org: mutiOrg[0].logo_org });
+        res.render('gestioneContatto', { name: mutiOrg[0].descrizione, logo_org: mutiOrg[0].logo_org, cod_org: mutiOrg[0].cod_org });
     });
 
     app.get('/declinato', function (req, res, next) {
         let  mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
-        res.render('declinato', { name: mutiOrg[0].descrizione, logo_org: mutiOrg[0].logo_org });
+        res.render('declinato', { logo_org: mutiOrg[0].logo_org });
     });
 
     app.get('/partecipato', function (req, res, next) {
