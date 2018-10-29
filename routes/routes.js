@@ -49,12 +49,12 @@ module.exports = function (app) {
 
     app.get('/declinato', function (req, res, next) {
         let  mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
-        res.render('declinato', { logo_org: mutiOrg[0].logo_org });
+        res.render('declinato');
     });
 
     app.get('/partecipato', function (req, res, next) {
         let  mutiOrg = lodash.filter(multiUser.data, { 'cod_org': req.session.cod_org } );
-        res.render('partecipato', { logo_org: mutiOrg[0].logo_org });
+        res.render('partecipato');
     });
 
     app.get('/gestioneInteressi', function (req, res, next) {

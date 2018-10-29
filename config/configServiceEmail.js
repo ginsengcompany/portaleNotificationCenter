@@ -2,9 +2,9 @@
 let config = {};
 config.serviceEmail = {};
 config.serviceEmail.service = 'Gmail';
-config.serviceEmail.user = 'omceoce.ak12srl@gmail.com';
-config.serviceEmail.pass = 'omceoce.ak12';
-config.serviceEmail.from = 'omceoce.ak12srl@gmail.com';
+config.serviceEmail.user = 'ak12sviluppo@gmail.com';
+config.serviceEmail.pass = 'ak12srl0';
+config.serviceEmail.from = 'ak12sviluppo@gmail.com';
 
 module.exports = config;
 

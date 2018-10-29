@@ -9,14 +9,14 @@ $(document).ready(function () {
 
     tabUtenti = $('#tabellaUtenti').DataTable({});
 
-    tabUtenti.on( 'click', 'tr', function () {
+    tabUtenti.on('click', 'tr', function () {
         $(this).toggleClass('selected');
-        if (tabUtenti.rows( '.selected' ).count() > 0) {
+        if (tabUtenti.rows('.selected').count() > 0) {
             $('#btnConfermaStepTre').show();
-        }else {
+        } else {
             $('#btnConfermaStepTre').hide();
         }
-    } );
+    });
 
 
     $('#tabellaEventi tbody').on('click', 'tr', function () {
@@ -104,6 +104,9 @@ function inizializzaPagina() {
     $("#stepTre").removeClass("active");
     $("#stepQuattro").removeClass("active");
     $('#contenutoStepUno').show();
+    $("#dataEvento").datepicker('setDate', null);
+    $("#lblStepDue").text("");
+    $("#lblStepTre").text("");
     $('#invioEvento').prop("checked", false);
     $('#invioNotainformativa').prop("checked", false);
     $('#btnConfermaStepQuattro').prop("disabled", false);
@@ -141,22 +144,23 @@ function passaStepTre() {
         });
         arrayEventi = ids1;
         if ($('#invioEvento').is(":checked"))
-        $("#lblStepTre").text("Seleziona modalità di invio e utenti per l'evento: " + arrayEventi[0].titolo );
+            $("#lblStepTre").text("Seleziona modalità di invio e utenti per l'evento: " + arrayEventi[0].titolo);
         else
-            $("#lblStepTre").text("Seleziona modalità di invio e utenti per la nota: " + arrayEventi[0].titolo );
+            $("#lblStepTre").text("Seleziona modalità di invio e utenti per la nota: " + arrayEventi[0].titolo);
     });
 }
+
 function passaStepQuattro() {
-        $('#contenutoStepTre').hide();
-        $("#stepTre").removeClass("active");
-        $("#stepQuattro").addClass("active");
-        $('#contenutoStepQuattro').show();
-        let ids1 = $.map(tabEventi.rows('.selected').data(), function (item) {
-            return item;
-        });
-        arrayEventi = ids1;
-        console.log(arrayEventi);
-        $("#lblEvento").text(arrayEventi[0].titolo);
+    $('#contenutoStepTre').hide();
+    $("#stepTre").removeClass("active");
+    $("#stepQuattro").addClass("active");
+    $('#contenutoStepQuattro').show();
+    let ids1 = $.map(tabEventi.rows('.selected').data(), function (item) {
+        return item;
+    });
+    arrayEventi = ids1;
+    console.log(arrayEventi);
+    $("#lblEvento").text(arrayEventi[0].titolo);
 }
 
 function switchTableEvent() {
@@ -207,23 +211,23 @@ function switchTableEvent() {
                                     {"data": "luogo"},
                                     {
                                         "data": "data", "render": function (data) {
-                                        function pad(s) {
-                                            return (s < 10) ? '0' + s : s;
-                                        }
+                                            function pad(s) {
+                                                return (s < 10) ? '0' + s : s;
+                                            }
 
-                                        let d = new Date(data);
-                                        return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-                                    }
+                                            let d = new Date(data);
+                                            return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+                                        }
                                     },
                                     {
                                         "data": "data_fine", "render": function (data) {
-                                        function pad(s) {
-                                            return (s < 10) ? '0' + s : s;
-                                        }
+                                            function pad(s) {
+                                                return (s < 10) ? '0' + s : s;
+                                            }
 
-                                        let d = new Date(data);
-                                        return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-                                    }
+                                            let d = new Date(data);
+                                            return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+                                        }
                                     },
                                     {"data": "relatori"}
                                 ]
@@ -277,28 +281,28 @@ function switchTableEvent() {
                 {"data": "luogo", "visible": false},
                 {
                     "data": "data", "render": function (data) {
-                    function pad(s) {
-                        console.log(data);
-                        return (s < 10) ? '0' + s : s;
-                    }
+                        function pad(s) {
+                            return (s < 10) ? '0' + s : s;
+                        }
 
-                    let d = new Date(data);
-                    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-                }, "visible": false
+                        let d = new Date(data);
+                        return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+                    }, "visible": false
                 },
                 {
                     "data": "data_fine", "render": function (data) {
-                    function pad(s) {
-                        return (s < 10) ? '0' + s : s;
-                    }
+                        function pad(s) {
+                            return (s < 10) ? '0' + s : s;
+                        }
 
-                    let d = new Date(data);
-                    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-                }, "visible": false
+                        let d = new Date(data);
+                        return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+                    }, "visible": false
                 },
                 {"data": "relatori", "visible": false}
             ]
         });
+        $('#conteinerHideModalita').show();
     }
 
     if ($('#invioEvento').prop('checked') === false && $('#invioNotainformativa').prop('checked') === false) {
@@ -312,6 +316,7 @@ function switchTableEvent() {
     }
 }
 
+
 function generaTabUtenti(rotteUtenti) {
     if (tabUtenti) {
         $('#tabellaUtenti').dataTable().fnClearTable();
@@ -321,15 +326,21 @@ function generaTabUtenti(rotteUtenti) {
         responsive: true,
         dom: 'Bfrtip',
         buttons: [
-            'selectAll',
-            'selectNone',
-        ],
-        language: {
-            buttons: {
-                selectAll: "Seleziona tutto",
-                selectNone: "Deseleziona"
+            {
+                text: 'Seleziona tutto',
+                action: function ( e, dt, node, config ) {
+                    tab.rows().select();
+                    $('#btnConfermaStepTre').show();
+                }
+            },
+            {
+                text: 'Deseleziona',
+                action: function ( e, dt, node, config ) {
+                    tab.rows().deselect();
+                    $('#btnConfermaStepTre').hide();
+                }
             }
-        },
+        ],
         select: {
             style: 'multi'
         },
@@ -364,17 +375,17 @@ function switchTableModalitaInvio() {
     };
 
     //token
-    if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === false){
+    if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === false) {
         rotteUtenti = '/getUtentiToken';
         tabUtenti = generaTabUtenti(rotteUtenti);
         $('#conteinerHideUtenti').show();
     }
-    else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === true){
+    else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === false && $('#invioSms').prop('checked') === true) {
         rotteUtenti = 'getUtentiTokenSms';
         tabUtenti = generaTabUtenti(rotteUtenti);
         $('#conteinerHideUtenti').show();
     }
-    else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === false){
+    else if ($('#invioPush').prop('checked') === true && $('#invioEmail').prop('checked') === true && $('#invioSms').prop('checked') === false) {
         rotteUtenti = '/getUtentiTokenEmail';
         tabUtenti = generaTabUtenti(rotteUtenti);
         $('#conteinerHideUtenti').show();
@@ -416,8 +427,7 @@ function switchTableModalitaInvio() {
         tabUtenti = generaTabUtenti(rotteUtenti);
         $('#conteinerHideUtenti').show();
     }
-    else
-    {
+    else {
         $('#btnConfermaStepTre').hide();
         $('#conteinerHideUtenti').hide();
     }
