@@ -14,10 +14,13 @@ router.post('/',function (req, res, next) {
     let datiEmail = req.body;
 
     let transporter = nodemailer.createTransport({
-        service: config.serviceEmail.service,
+        //service: config.serviceEmail.service,
+        host: 'smtp.gesan.it',
+        port: 587,
+        secure: false,
         auth: {
-            user: config.serviceEmail.user,
-            pass: config.serviceEmail.pass
+            user: "ecupt@gesan.it",
+            pass: "Sviluppoecupt18!"
         }
     });
 
@@ -353,7 +356,7 @@ router.post('/',function (req, res, next) {
 
 
     let mailOptions = {
-        from: config.serviceEmail.from,
+        from: 'noreply@ecupt.it',
         to: datiEmail.to,
         subject: datiEmail.subject,
         html: html

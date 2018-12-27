@@ -225,7 +225,7 @@ function updateUtente(){
     datiUtente.nome = $('#nome').val();
     datiUtente.cognome = $('#cognome').val();
     datiUtente.provincia = $('#provincia').val();
-    datiUtente.mail = $('#mail').val();
+    datiUtente.mail = $('#mail').val().toLowerCase();
     datiUtente.telefono = $('#telefono').val();
     datiUtente.pec = $('#pec').val();
     datiUtente.interessi = $('#interessi').tokenfield('getTokensList');
@@ -306,14 +306,14 @@ function AddUtente(){
     datiContatto.cognome = $('#cognome2').val();
     datiContatto.specializzazione = $('#specializzazione2').val();
     datiContatto.provincia = $('#provincia2').val();
-    datiContatto.mail = $('#mail2').val();
+    datiContatto.mail = $('#mail2').val().toLowerCase();
     datiContatto.username = $('#username2').val().toUpperCase();
     datiContatto.password = $('#password2').val();
     datiContatto.numero_telefono = $('#telefono2').val();
     datiContatto.pec = $('#pec2').val();
     datiContatto.interesse = $('#interessi2').val();
     datiContatto.attivo = $("#utenteAttivo2").is(":checked") ? true : false;
-
+    console.log(datiContatto);
     if (
         (datiContatto.nome === null || datiContatto.nome === undefined || datiContatto.nome === '' || datiContatto.nome === "") ||
         (datiContatto.cognome === null || datiContatto.cognome === undefined || datiContatto.cognome === '' || datiContatto.cognome === "") ||
